@@ -16,6 +16,14 @@ namespace MusicBusiness
     {
       Venue.DeleteAll();
     }
+    [Fact]
+   public void T1_VenuesEmptyAtFirst()
+   {
+     //arrange, act
+     int result = Venue.GetAll().Count;
+     //assert
+     Assert.Equal(0, result);
+   }
 
 
   }
