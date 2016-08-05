@@ -15,6 +15,7 @@ namespace MusicBusiness
     public void Dispose()
     {
       Band.DeleteAll();
+      Venue.DeleteAll();
     }
 
     [Fact]
@@ -74,6 +75,55 @@ namespace MusicBusiness
       //Assert
       Assert.Equal(testBand, foundBand);
     }
+    [Fact]
+   public void T6_AddBandToVenue_True()
+   {
+     Venue testVenue = new Venue("Paramont");
+     testVenue.Save();
+
+
+     Band testBand = new Band("GNR");
+     testBand.Save();
+
+     Band testBand2 = new Band("Primus");
+     testBand2.Save();
+
+     testVenue.AddBands(testBand);
+     testVenue.AddBands(testBand2);
+     List<Band> allBand= Band.GetAll();
+     List<Band> result = testVenue.GetBands();
+     List<Band> testList = new List<Band>{testBand,testBand2};
+
+     Assert.Equal(testList, result);
+   }
+
+   [Fact]
+   public void T9_GetBands_ReturnsAllBandVenues()
+   {
+     Venue testVenue = new Venue("Paramont");
+     testVenue.Save();
+
+     Band testBand1 = new Band("GNR");
+     testBand1.Save();
+
+     Band testBand2 = new Band("Primus");
+     testBand2.Save();
+
+     Band testBand3 = new Band("The Strokes");
+     testBand3.Save();
+
+     Band testBand4 = new Band("Rob Zombie");
+     testBand4.Save();
+
+     testVenue.AddBands(testBand1);
+
+     List<Band> result = testVenue.GetBands();
+     List<Band> testList= new List<Band>{testBand1};
+
+     Assert.Equal(testList,result);
+   }
+
+
 
   }
 }

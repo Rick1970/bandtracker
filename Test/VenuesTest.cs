@@ -15,6 +15,7 @@ namespace MusicBusiness
     public void Dispose()
     {
       Venue.DeleteAll();
+      Band.DeleteAll();
     }
 
     [Fact]
@@ -89,52 +90,6 @@ namespace MusicBusiness
       Assert.Equal(newName, result);
     }
 
-    // [Fact]
-    // public void T6_GetBands_RetrievesAllBandsWithVenue()
-    // {
-    //   Venue testVenue = new Venue("Paramont");
-    //   testVenue.Save();
-    //
-    //   Band firstBand = new Band("GNR", testVenue.GetId());
-    //   firstBand.Save();
-    //   Band secondBand = new Band("Slayer", testVenue.GetId());
-    //   secondBand.Save();
-    //
-    //
-    //   List<Band> testBandList = new List<Band> {firstBand, secondBand};
-    //   List<Band> resultBandList = testVenue.GetBands();
-    //
-    //   Assert.Equal(testBandList, resultBandList);
-    // }
 
-    // [Fact]
-    // public void T7_Delete_DeletesVenueFromDatabase()
-    // {
-    //   //Arrange
-    //   string name1 = "Pheonix";
-    //   Venue testVenue1 = new Venue(name1);
-    //   testVenue1.Save();
-    //
-    //   string name2 = "Rock Candy";
-    //   Venue testVenue2 = new Venue(name2);
-    //   testVenue2.Save();
-    //
-    //   Band testBand1 = new Band("Metallica", testVenue1.GetId());
-    //   testBand1.Save();
-    //   Band testBand2 = new Band("Guns and Roses", testVenue2.GetId());
-    //   testBand2.Save();
-    //
-    //   //Act
-    //   testVenue1.Delete();
-    //   List<Venue> resultVenue = Venue.GetAll();
-    //   List<Venue> testVenueList = new List<Venue> {testVenue2};
-    //
-    //   List<Band> resultBands = Band.GetAll();
-    //   List<Band> testBandList = new List<Band> {testBand2};
-    //
-    //   //Assert
-    //   Assert.Equal(testVenueList, resultVenue);
-    //   Assert.Equal(testBandList, resultBands);
-    // }
-  }
+}
 }
