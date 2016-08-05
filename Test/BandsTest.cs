@@ -98,7 +98,7 @@ namespace MusicBusiness
    }
 
    [Fact]
-   public void T9_GetBands_ReturnsAllBandVenues()
+   public void T7_GetBands_ReturnsAllBandVenues()
    {
      Venue testVenue = new Venue("Paramont");
      testVenue.Save();

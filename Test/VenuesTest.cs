@@ -89,6 +89,53 @@ namespace MusicBusiness
       //Assert
       Assert.Equal(newName, result);
     }
+    [Fact]
+    public void T7_AddVenueToBand_True()
+    {
+     Band testBand = new Band("GNR");
+     testBand.Save();
+
+
+     Venue testVenue = new Venue("Paramont");
+     testVenue.Save();
+
+     Venue testVenue2 = new Venue("Rock Candy");
+     testVenue2.Save();
+
+     testBand.AddVenues(testVenue);
+     testBand.AddVenues(testVenue2);
+     List<Venue> allVenue = Venue.GetAll();
+     List<Venue> result = testBand.GetVenues();
+     List<Venue> testList = new List<Venue>{testVenue,testVenue2};
+
+     Assert.Equal(testList, result);
+    }
+
+    [Fact]
+    public void T8_GetVenues_ReturnsAllVenueBand()
+    {
+     Band testBand = new Band("GNR");
+     testBand.Save();
+
+     Venue testVenue1 = new Venue("Paramont");
+     testVenue1.Save();
+
+     Venue testVenue2 = new Venue("Rock Candy");
+     testVenue2.Save();
+
+     Venue testVenue3 = new Venue("Cafe Arizona");
+     testVenue3.Save();
+
+     Venue testVenue4 = new Venue("Joes Bar and Grill");
+     testVenue4.Save();
+
+     testBand.AddVenues(testVenue1);
+
+     List<Venue> result = testBand.GetVenues();
+     List<Venue> testList= new List<Venue>{testVenue1};
+
+     Assert.Equal(testList,result);
+    }
 
 
 }
