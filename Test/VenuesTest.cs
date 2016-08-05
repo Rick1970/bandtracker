@@ -74,6 +74,19 @@ namespace MusicBusiness
       //Assert
       Assert.Equal(testVenue, foundVenue);
     }
-
+    [Fact]
+       public void T7_Update_UpdatesVenueInDatabase()
+       {
+         //Arrange
+         string name = "Pheonix";
+         Venue testVenue = new Venue(name);
+         testVenue.Save();
+         string newName = "Rock Candy";
+         //Act
+         testVenue.Update(newName);
+         string result = testVenue.GetName();
+         //Assert
+         Assert.Equal(newName, result);
+       }
   }
 }
