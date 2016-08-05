@@ -132,40 +132,63 @@ namespace MusicBusiness
     }
 
     public void Update(string newName)
-   {
-     SqlConnection conn = DB.Connection();
-     conn.Open();
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
 
-     SqlCommand cmd = new SqlCommand("UPDATE venues SET name = @NewName OUTPUT INSERTED.name WHERE id = @VenueId;", conn);
+      SqlCommand cmd = new SqlCommand("UPDATE venues SET name = @NewName OUTPUT INSERTED.name WHERE id = @VenueId;", conn);
 
-     SqlParameter newNameParameter = new SqlParameter();
-     newNameParameter.ParameterName = "@NewName";
-     newNameParameter.Value = newName;
-     cmd.Parameters.Add(newNameParameter);
+      SqlParameter newNameParameter = new SqlParameter();
+      newNameParameter.ParameterName = "@NewName";
+      newNameParameter.Value = newName;
+      cmd.Parameters.Add(newNameParameter);
 
 
-     SqlParameter venueIdParameter = new SqlParameter();
-     venueIdParameter.ParameterName = "@VenueId";
-     venueIdParameter.Value = this.GetId();
-     cmd.Parameters.Add(venueIdParameter);
-     SqlDataReader rdr = cmd.ExecuteReader();
+      SqlParameter venueIdParameter = new SqlParameter();
+      venueIdParameter.ParameterName = "@VenueId";
+      venueIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(venueIdParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
 
-     while(rdr.Read())
-     {
-       this._name = rdr.GetString(0);
-     }
+      while(rdr.Read())
+      {
+        this._name = rdr.GetString(0);
+      }
 
-     if (rdr != null)
-     {
-       rdr.Close();
-     }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
 
-     if (conn != null)
-     {
-       conn.Close();
-     }
-   }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+    public override int GetHashCode()
+    {
+      return this.GetId().GetHashCode();
+    }
 
+    public void Delete()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("DELETE FROM venues WHERE id = @VenueId; DELETE FROM bands WHERE venue_id = @VenueId;", conn);
+
+      SqlParameter venueIdParameter = new SqlParameter();
+      venueIdParameter.ParameterName = "@VenueId";
+      venueIdParameter.Value = this.GetId();
+
+      cmd.Parameters.Add(venueIdParameter);
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public static void DeleteAll()
     {

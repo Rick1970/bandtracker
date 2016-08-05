@@ -17,6 +17,14 @@ namespace MusicBusiness
       Band.DeleteAll();
     }
 
+    [Fact]
+       public void T1_BandsEmptyAtFirst()
+       {
+         //arrange, act
+         int result = Band.GetAll().Count;
+         //assert
+         Assert.Equal(0, result);
+       }
 
   }
 }
