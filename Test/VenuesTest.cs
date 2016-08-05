@@ -16,6 +16,7 @@ namespace MusicBusiness
     {
       Venue.DeleteAll();
     }
+
     [Fact]
    public void T1_VenuesEmptyAtFirst()
    {
@@ -23,6 +24,16 @@ namespace MusicBusiness
      int result = Venue.GetAll().Count;
      //assert
      Assert.Equal(0, result);
+   }
+
+   [Fact]
+   public void T2_Equal_ReturnsTrueIfNamesAreTheSame()
+   {
+     //arrange, act
+     Venue firstVenue = new Venue("Pheonix");
+     Venue secondVenue = new Venue("Pheonix");
+     //Assert
+     Assert.Equal(firstVenue, secondVenue);
    }
 
 
