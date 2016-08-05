@@ -49,7 +49,7 @@ namespace MusicBusiness
       }
 
       [Fact]
-      public void T4_Save_AaaignsIdToObject()
+      public void T4_Save_AsignsIdToObject()
       {
         //arrange
         Venue newVenue = new Venue("Pheonix");
@@ -62,6 +62,18 @@ namespace MusicBusiness
         //assert
         Assert.Equal(testId, result);
       }
+
+      [Fact]
+    public void T5_Find_FindNameInDatabase()
+    {
+      //arrange
+      Venue testVenue = new Venue("Pheonix");
+      testVenue.Save();
+      //act
+      Venue foundVenue = Venue.Find(testVenue.GetId());
+      //Assert
+      Assert.Equal(testVenue, foundVenue);
+    }
 
   }
 }
