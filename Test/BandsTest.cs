@@ -48,6 +48,20 @@ namespace MusicBusiness
       //Assert
       Assert.Equal(testList, result);
     }
+    [Fact]
+    public void T4_Save_AsignsIdToObject()
+    {
+      //arrange
+      Band newBand = new Band("GNR");
+      //action
+      newBand.Save();
+      Band savedBand = Band.GetAll()[0];
+
+      int result = savedBand.GetId();
+      int testId = newBand.GetId();
+      //assert
+      Assert.Equal(testId, result);
+    }
 
   }
 }
