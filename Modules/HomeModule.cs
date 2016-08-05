@@ -9,7 +9,9 @@ namespace MusicBusiness
   {
     public HomeModule()
     {
-
+       Get ["/"] = _ => {
+         return View["index.cshtml"];
+       };
     }
   }
 }
