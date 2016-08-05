@@ -136,6 +136,22 @@ namespace MusicBusiness
 
      Assert.Equal(testList,result);
     }
+    [Fact]
+   public void T9_Delete_DeletesVenueFromDB()
+   {
+     Venue testVenue1 = new Venue("Paramont");
+     testVenue1.Save();
+     Venue testVenue2 = new Venue("HD Hotspurs");
+     testVenue2.Save();
+
+     testVenue1.Delete();
+
+     List<Venue> result = Venue.GetAll();
+     List<Venue> testVenues = new List<Venue> {testVenue2};
+
+     Assert.Equal(testVenues, result);
+   }
+
 
 
 }
