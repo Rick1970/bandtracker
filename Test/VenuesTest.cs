@@ -48,5 +48,20 @@ namespace MusicBusiness
         Assert.Equal(testList, result);
       }
 
+      [Fact]
+      public void T4_Save_AaaignsIdToObject()
+      {
+        //arrange
+        Venue newVenue = new Venue("Pheonix");
+        //action
+        newVenue.Save();
+        Venue savedVenue = Venue.GetAll()[0];
+
+        int result = savedVenue.GetId();
+        int testId = newVenue.GetId();
+        //assert
+        Assert.Equal(testId, result);
+      }
+
   }
 }
