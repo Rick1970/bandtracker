@@ -26,5 +26,15 @@ namespace MusicBusiness
          Assert.Equal(0, result);
        }
 
+       [Fact]
+    public void T2_Equal_ReturnsTrueIfNamesAreTheSame()
+    {
+      //arrange, act
+      Band firstBand = new Band("GNR");
+      Band secondBand = new Band("GNR");
+      //Assert
+      Assert.Equal(firstBand, secondBand);
+    }
+
   }
 }
