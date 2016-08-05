@@ -8,7 +8,7 @@ namespace MusicBusiness
 {
   public class VenueTest : IDisposable
   {
-    public BandTest()
+    public VenueTest()
     {
       DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=band_tracker_test;Integrated Security=SSPI;";
     }

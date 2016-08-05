@@ -5,15 +5,15 @@ using System.Data.SqlClient;
 
 namespace MusicBusiness
 {
-  public class Venues
+  public class Venue
   {
     private int _id;
     private string _name;
 
-    public Book (string Name, int Id = 0)
+    public Venue (string Name, int Id = 0)
     {
       _id = Id;
-      _title = Name;
+      _name = Name;
     }
 
     public static void DeleteAll()
