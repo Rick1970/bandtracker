@@ -36,5 +36,18 @@ namespace MusicBusiness
       Assert.Equal(firstBand, secondBand);
     }
 
+    [Fact]
+    public void T3_Test_Save_SavesToDatabase()
+    {
+      //arrange
+      Band testBand = new Band("GNR");
+      //act
+      testBand.Save();
+      List<Band> result = Band.GetAll();
+      List<Band> testList = new List<Band>{testBand};
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
   }
 }
