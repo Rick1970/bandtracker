@@ -63,5 +63,17 @@ namespace MusicBusiness
       Assert.Equal(testId, result);
     }
 
+    [Fact]
+    public void T5_Find_FindNameInDatabase()
+    {
+      //arrange
+      Band testBand = new Band("Pheonix");
+      testBand.Save();
+      //act
+      Band foundBand = Band.Find(testBand.GetId());
+      //Assert
+      Assert.Equal(testBand, foundBand);
+    }
+
   }
 }
