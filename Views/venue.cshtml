@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Venue</title>
+</head>
+<body>
+  <h2>Here are all the bands for this Venue.</h2>
+
+  @if (@Model["bands"].Count == 0)
+  {
+    <p>No Bands have been Added Yet.</p>
+  }
+  else
+  {
+    <ol>
+      @foreach (var band in @Model["bands"])
+      {
+        <li>@band.GetName()</li>
+      }
+    </ol>
+  }
+  <p><a href="/bands/new">Add another Band</a></p>
+  <p><a href="/">Home</a>
+
+  </body>
+  </html>
