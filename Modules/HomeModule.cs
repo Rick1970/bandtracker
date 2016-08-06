@@ -38,7 +38,32 @@ namespace MusicBusiness
        newBand.Save();
        return View["success.cshtml"];
      };
-    
+     Get["/venue/{id}"] = parameters => {
+         Dictionary<string, object> model = new Dictionary<string, object>();
+         var SelectedVenue = Venue.Find(parameters.id);
+         var VenuesBands = SelectedVenue.GetBands();
+         model.Add("bands", VenuesBands);
+         model.Add("venues", SelectedVenue);
+         return View["venue.cshtml", model];
+       };
+       Get["venue/edit/{id}"] = parameters => {
+        Venue SelectedVenue = Venue.Find(parameters.id);
+        return View["venue_edit.cshtml", SelectedVenue];
+      };
+     Patch["venue/edit/{id}"] = parameters => {
+         Venue SelectedVenue = Venue.Find(parameters.id);
+         SelectedVenue.Update(Request.Form["venue-name"]);
+         return View["success.cshtml"];
+       };
+     Get["venue/delete/{id}"] = parameters => {
+        Venue SelectedVenue = Venue.Find(parameters.id);
+        return View["venue_delete.cshtml", SelectedVenue];
+      };
+     Delete["venue/delete/{id}"] = parameters => {
+        Venue SelectedVenue = Venue.Find(parameters.id);
+        SelectedVenue.Delete();
+        return View["success.cshtml"];
+      };
     }
   }
 }
