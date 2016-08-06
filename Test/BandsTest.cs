@@ -19,15 +19,15 @@ namespace MusicBusiness
     }
 
     [Fact]
-       public void T1_BandsEmptyAtFirst()
-       {
-         //arrange, act
-         int result = Band.GetAll().Count;
-         //assert
-         Assert.Equal(0, result);
-       }
+    public void T1_BandsEmptyAtFirst()
+    {
+      //arrange, act
+      int result = Band.GetAll().Count;
+      //assert
+      Assert.Equal(0, result);
+    }
 
-       [Fact]
+    [Fact]
     public void T2_Equal_ReturnsTrueIfNamesAreTheSame()
     {
       //arrange, act
@@ -49,6 +49,7 @@ namespace MusicBusiness
       //Assert
       Assert.Equal(testList, result);
     }
+
     [Fact]
     public void T4_Save_AsignsIdToObject()
     {
@@ -75,55 +76,53 @@ namespace MusicBusiness
       //Assert
       Assert.Equal(testBand, foundBand);
     }
+
     [Fact]
-   public void T6_AddBandToVenue_True()
-   {
-     Venue testVenue = new Venue("Paramont");
-     testVenue.Save();
+    public void T6_AddBandToVenue_True()
+    {
+      Venue testVenue = new Venue("Paramont");
+      testVenue.Save();
 
 
-     Band testBand = new Band("GNR");
-     testBand.Save();
+      Band testBand = new Band("GNR");
+      testBand.Save();
 
-     Band testBand2 = new Band("Primus");
-     testBand2.Save();
+      Band testBand2 = new Band("Primus");
+      testBand2.Save();
 
-     testVenue.AddBands(testBand);
-     testVenue.AddBands(testBand2);
-     List<Band> allBand= Band.GetAll();
-     List<Band> result = testVenue.GetBands();
-     List<Band> testList = new List<Band>{testBand,testBand2};
+      testVenue.AddBands(testBand);
+      testVenue.AddBands(testBand2);
+      List<Band> allBand= Band.GetAll();
+      List<Band> result = testVenue.GetBands();
+      List<Band> testList = new List<Band>{testBand,testBand2};
 
-     Assert.Equal(testList, result);
-   }
+      Assert.Equal(testList, result);
+    }
 
-   [Fact]
-   public void T7_GetBands_ReturnsAllBandVenues()
-   {
-     Venue testVenue = new Venue("Paramont");
-     testVenue.Save();
+    [Fact]
+    public void T7_GetBands_ReturnsAllBandVenues()
+    {
+      Venue testVenue = new Venue("Paramont");
+      testVenue.Save();
 
-     Band testBand1 = new Band("GNR");
-     testBand1.Save();
+      Band testBand1 = new Band("GNR");
+      testBand1.Save();
 
-     Band testBand2 = new Band("Primus");
-     testBand2.Save();
+      Band testBand2 = new Band("Primus");
+      testBand2.Save();
 
-     Band testBand3 = new Band("The Strokes");
-     testBand3.Save();
+      Band testBand3 = new Band("The Strokes");
+      testBand3.Save();
 
-     Band testBand4 = new Band("Rob Zombie");
-     testBand4.Save();
+      Band testBand4 = new Band("Rob Zombie");
+      testBand4.Save();
 
-     testVenue.AddBands(testBand1);
+      testVenue.AddBands(testBand1);
 
-     List<Band> result = testVenue.GetBands();
-     List<Band> testList= new List<Band>{testBand1};
+      List<Band> result = testVenue.GetBands();
+      List<Band> testList= new List<Band>{testBand1};
 
-     Assert.Equal(testList,result);
-   }
-
-
-
+      Assert.Equal(testList,result);
+    }    
   }
 }
