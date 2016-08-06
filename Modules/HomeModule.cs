@@ -70,12 +70,12 @@ namespace MusicBusiness
 
       Get["bands/{id}"]=parameters=>{
         Dictionary<string, object> model = new Dictionary<string, object>();
-        Band SelectedBand = Band.Find(parameters.id);
-        List<Venue> BandVenues = SelectedBand.GetVenues();
-        List<Venue> AllVenues = Venue.GetAll();
-        model.Add("band",SelectedBand);
-        model.Add("bandVenues",BandVenues);
-        model.Add("allVenues",AllVenues);
+        Band selectedBand = Band.Find(parameters.id);
+        List<Venue> bandVenues = selectedBand.GetVenues();
+        List<Venue> allVenues = Venue.GetAll();
+        model.Add("band",selectedBand);
+        model.Add("bandVenues",bandVenues);
+        model.Add("allVenues",allVenues);
         return View["band.cshtml",model];
       };
 
